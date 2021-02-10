@@ -115,6 +115,9 @@ type Config struct {
 	// ContainerCreateTimeout specifies the amount of time to wait to create a container
 	ContainerCreateTimeout time.Duration
 
+	// ContainerInspectTimeout specifies the amount of time to wait to inspect a container
+	ContainerInspectTimeout time.Duration
+
 	// DependentContainersPullUpfront specifies whether pulling images upfront should be applied to this agent.
 	// Default false
 	DependentContainersPullUpfront BooleanDefaultFalse

@@ -107,6 +107,19 @@ func parseContainerCreateTimeout() time.Duration {
 	return containerCreateTimeout
 }
 
+func parseContainerInspectTimeout() time.Duration {
+	var containerInspectTimeout time.Duration
+	parsedInspectTimeout := parseEnvVariableDuration("ECS_CONTAINER_INSPECT_TIMEOUT")
+	if parsedInspectTimeout >= minimumContainerInspectTimeout {
+		containerInspectTimeout = parsedInspectTimeout
+		// do the parsedInspectTimeout != 0 check for the same reason as in getDockerStopTimeout()
+	} else if parsedInspectTimeout != 0 {
+		containerInspectTimeout = minimumContainerInspectTimeout
+		seelog.Warnf("Discarded invalid value for container inspect timeout, parsed as: %v", parsedInspectTimeout)
+	}
+	return containerInspectTimeout
+}
+
 func parseImagePullInactivityTimeout() time.Duration {
 	var imagePullInactivityTimeout time.Duration
 	parsedImagePullInactivityTimeout := parseEnvVariableDuration("ECS_IMAGE_PULL_INACTIVITY_TIMEOUT")

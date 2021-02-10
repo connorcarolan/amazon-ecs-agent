@@ -53,6 +53,10 @@ const (
 	defaultContainerCreateTimeout = 4 * time.Minute
 	// minimumContainerCreateTimeout specifies the minimum value for creating a container
 	minimumContainerCreateTimeout = 1 * time.Minute
+	// defaultContainerInspectTimeout specifies the value for container inspecting timeout duration
+	defaultContainerInspectTimeout = 30 * time.Second
+	// minimumContainerInspectTimeout specifies the minimum value for inspecting a container
+	minimumContainerInspectTimeout = 10 * time.Second
 	// default image pull inactivity time is extra time needed on container extraction
 	defaultImagePullInactivityTimeout = 3 * time.Minute
 )
@@ -92,6 +96,7 @@ func DefaultConfig() Config {
 		DockerStopTimeout:                   defaultDockerStopTimeout,
 		ContainerStartTimeout:               defaultContainerStartTimeout,
 		ContainerCreateTimeout:              defaultContainerCreateTimeout,
+		ContainerInspectTimeout:             defaultContainerInspectTimeout,
 		DependentContainersPullUpfront:      BooleanDefaultFalse{Value: ExplicitlyDisabled},
 		ImagePullInactivityTimeout:          defaultImagePullInactivityTimeout,
 		ImagePullTimeout:                    DefaultImagePullTimeout,

@@ -538,6 +538,7 @@ func environmentConfig() (Config, error) {
 		DockerStopTimeout:                   parseDockerStopTimeout(),
 		ContainerStartTimeout:               parseContainerStartTimeout(),
 		ContainerCreateTimeout:              parseContainerCreateTimeout(),
+		ContainerInspectTimeout:             parseContainerInspectimeout(),
 		DependentContainersPullUpfront:      parseBooleanDefaultFalseConfig("ECS_PULL_DEPENDENT_CONTAINERS_UPFRONT"),
 		ImagePullInactivityTimeout:          parseImagePullInactivityTimeout(),
 		ImagePullTimeout:                    parseEnvVariableDuration("ECS_IMAGE_PULL_TIMEOUT"),
@@ -607,6 +608,7 @@ func (cfg *Config) String() string {
 			"DockerStopTimeout: %v, "+
 			"ContainerStartTimeout: %v, "+
 			"ContainerCreateTimeout: %v, "+
+			"ContainerInspectTimeout: %v, "+
 			"DependentContainersPullUpfront: %v, "+
 			"TaskCPUMemLimit: %v, "+
 			"%s",
@@ -624,6 +626,7 @@ func (cfg *Config) String() string {
 		cfg.DockerStopTimeout,
 		cfg.ContainerStartTimeout,
 		cfg.ContainerCreateTimeout,
+		cfg.ContainerInspectTimeout,
 		cfg.DependentContainersPullUpfront,
 		cfg.TaskCPUMemLimit,
 		cfg.platformString(),

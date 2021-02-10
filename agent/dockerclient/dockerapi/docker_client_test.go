@@ -757,7 +757,7 @@ func TestInspectContainer(t *testing.T) {
 	)
 	ctx, cancel := context.WithCancel(context.TODO())
 	defer cancel()
-	container, err := client.InspectContainer(ctx, "id", dockerclient.InspectContainerTimeout)
+	container, err := client.InspectContainer(ctx, "id", defaultTestConfig().ContainerInspectTimeout)
 	assert.NoError(t, err)
 	assert.True(t, reflect.DeepEqual(&containerOutput, container))
 }
